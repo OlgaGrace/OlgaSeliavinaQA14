@@ -16,7 +16,7 @@ public class CreateGroupTest extends TestBase {
   public void groupLongName() throws Exception {
     goToGroupPage();
     createNewGroup();
-    fillGropuForm("namelong", "headerlong", "footer");
+    fillGropuForm("namelong", "headerlong", "footerlong");
     submitGroupCreation();
     returnToGroupPage();
     System.out.println("passed 3");
@@ -25,10 +25,18 @@ public class CreateGroupTest extends TestBase {
   public void groupShortName() throws Exception {
     goToGroupPage();
     createNewGroup();
-    fillGropuForm("ns", "hs", "footer");
+    fillGropuForm("ns", "hs", "footerlong");
     submitGroupCreation();
     returnToGroupPage();
     System.out.println("passed 2");
   }
+  @Test (priority = 1)
+  public void testUntitledTestCase2() throws Exception {
+    goToGroupPage();
+    createNewGroup();
+    fillGropuForm("name", "header", "footer");
+    submitGroupCreation();
+    returnToGroupPage();
+    System.out.println("passed 1");
 }
 
