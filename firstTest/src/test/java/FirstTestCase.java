@@ -15,7 +15,7 @@ public class FirstTestCase {
   @BeforeClass(alwaysRun = true)
   public void setUp() throws Exception {
     driver = new ChromeDriver();
-    
+
     driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
   }
 
