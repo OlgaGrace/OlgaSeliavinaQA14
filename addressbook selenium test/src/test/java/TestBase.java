@@ -94,4 +94,26 @@ public class TestBase {
     public void selectGroup() {
         driver.findElement(By.name("selected[]")).click();
     }
+
+    public void submitContactCreation() {
+        driver.findElement(By.name("submit")).click();
+    }
+
+    public void fillContactForm(String firstname1, String lastname1, String address1) {
+        driver.findElement(By.name("firstname")).click();
+        driver.findElement(By.name("firstname")).clear();
+        driver.findElement(By.name("firstname")).sendKeys(firstname1);
+
+        driver.findElement(By.name("lastname")).click();
+        driver.findElement(By.name("lastname")).clear();
+        driver.findElement(By.name("lastname")).sendKeys(lastname1);
+
+        driver.findElement(By.name("address")).click();
+        driver.findElement(By.name("address")).clear();
+        driver.findElement(By.name("address")).sendKeys(address1);
+    }
+
+    public void goToAddNewPage() {
+        driver.findElement(By.linkText("add new")).click();
+    }
 }
