@@ -96,7 +96,8 @@ public class TestBase {
     }
 
     public void submitContactCreation() {
-        driver.findElement(By.name("submit")).click();
+
+        driver.findElement(By.xpath("(//input[@name='submit'])[2]")).click();
     }
 
     public void fillContactForm(String firstname, String lastname, String address) {
