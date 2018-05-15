@@ -1,3 +1,4 @@
+import com.telran.addressbook.model.ContactData;
 import com.telran.addressbook.model.GroupData;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoAlertPresentException;
@@ -94,18 +95,18 @@ public class ApplicationManager {
         driver.findElement(By.xpath("(//input[@name='submit'])[2]")).click();
     }
 
-    public void fillContactForm(String firstname, String lastname, String address) {
+    public void fillContactForm(ContactData contactData) {
         driver.findElement(By.name("firstname")).click();
         driver.findElement(By.name("firstname")).clear();
-        driver.findElement(By.name("firstname")).sendKeys(firstname);
+        driver.findElement(By.name("firstname")).sendKeys(contactData.getFirstname());
 
         driver.findElement(By.name("lastname")).click();
         driver.findElement(By.name("lastname")).clear();
-        driver.findElement(By.name("lastname")).sendKeys(lastname);
+        driver.findElement(By.name("lastname")).sendKeys(contactData.getLastname());
 
         driver.findElement(By.name("address")).click();
         driver.findElement(By.name("address")).clear();
-        driver.findElement(By.name("address")).sendKeys(address);
+        driver.findElement(By.name("address")).sendKeys(contactData.getAddress());
     }
 
     public void goToAddNewPage() {
@@ -134,6 +135,7 @@ public class ApplicationManager {
     }
 
     public void initContactDelition() {
+        driver.findElement(By.xpath("//input[@value='Delete']")).click();
     }
 
     public void goToHomePage() {
