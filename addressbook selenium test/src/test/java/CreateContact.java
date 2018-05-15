@@ -1,4 +1,5 @@
 import com.telran.addressbook.model.ContactData;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
 
@@ -6,9 +7,13 @@ public class CreateContact extends TestBase {
 
     @Test
     public void contactCreationTest() {
+        int before = app.getContactCount();
         app.goToAddNewPage();
         app.fillContactForm(new ContactData("Olga", "Selevie", "Ramat Gan"));
         app.submitContactCreation();
+        int after = app.getContactCount();
+        Assert.assertEquals(after,before+1);
+
     }
     @Test
         public void contactCreationTest2(){

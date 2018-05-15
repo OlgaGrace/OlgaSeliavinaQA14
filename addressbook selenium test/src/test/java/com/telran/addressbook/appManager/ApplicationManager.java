@@ -1,5 +1,6 @@
+package com.telran.addressbook.appManager;
+
 import com.telran.addressbook.model.ContactData;
-import com.telran.addressbook.model.GroupData;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoAlertPresentException;
 import org.openqa.selenium.NoSuchElementException;
@@ -9,41 +10,19 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import java.util.concurrent.TimeUnit;
 
 public class ApplicationManager {
-    public WebDriver driver;
+    protected WebDriver driver;
+    private GroupHelper groupHelper;
 
     public void start() {
         driver = new ChromeDriver();
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-    }
-
-    public void createNewGroup() {
-      driver.findElement(By.name("new")).click();
+        groupHelper = new GroupHelper(driver);
+        openAddressbook("http://localhost/addressbook/");
+        login("admin", "secret");
     }
 
     public void goToGroupPage() {
       driver.findElement(By.linkText("groups")).click();
-    }
-
-    public void returnToGroupPage() {
-      driver.findElement(By.linkText("group page")).click();
-    }
-
-    public void submitGroupCreation() {
-      driver.findElement(By.name("submit")).click();
-    }
-
-    public void fillGropuForm(GroupData groupData) {
-      driver.findElement(By.name("group_name")).click();
-      driver.findElement(By.name("group_name")).clear();
-      driver.findElement(By.name("group_name")).sendKeys(groupData.getName());
-
-      driver.findElement(By.name("group_header")).click();
-      driver.findElement(By.name("group_header")).clear();
-      driver.findElement(By.name("group_header")).sendKeys(groupData.getHeader());
-
-      driver.findElement(By.name("group_footer")).click();
-      driver.findElement(By.name("group_footer")).clear();
-      driver.findElement(By.name("group_footer")).sendKeys(groupData.getFooter());
     }
 
     public void login(String username, String password) {
@@ -64,7 +43,7 @@ public class ApplicationManager {
         driver.quit();
     }
 
-    private boolean isElementPresent(By by) {
+    public boolean isElementPresent(By by) {
       try {
         driver.findElement(by);
         return true;
@@ -73,21 +52,13 @@ public class ApplicationManager {
       }
     }
 
-    private boolean isAlertPresent() {
+    public boolean isAlertPresent() {
       try {
         driver.switchTo().alert();
         return true;
       } catch (NoAlertPresentException e) {
         return false;
       }
-    }
-
-    public void deleteGroup() {
-        driver.findElement(By.name("delete")).click();
-    }
-
-    public void selectGroup() {
-        driver.findElement(By.name("selected[]")).click();
     }
 
     public void submitContactCreation() {
@@ -114,18 +85,6 @@ public class ApplicationManager {
     }
 
 
-    public int getGroupCount() {
-        return driver.findElements(By.name("selected[]")).size();
-    }
-
-    public void initGroupModification() {
-        driver.findElement(By.xpath("//*[@value='Edit group']")).click();
-    }
-
-    public void submitGroupModification() {
-        driver.findElement(By.cssSelector("[name=update]")).click();
-    }
-
     public void selectContact() {
         driver.findElement(By.name("selected[]")).click();
     }
@@ -143,4 +102,9 @@ public class ApplicationManager {
     }
 
 
+    public int getContactCount() { return driver.findElements(By.name("selected[]")).size(); }
+
+    public GroupHelper getGroupHelper() {
+        return groupHelper;
+    }
 }
