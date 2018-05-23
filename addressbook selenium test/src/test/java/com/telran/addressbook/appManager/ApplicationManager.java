@@ -10,21 +10,19 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import java.util.concurrent.TimeUnit;
 
 public class ApplicationManager {
-    private ContactHelper contactHelper;
     protected WebDriver driver;
     private GroupHelper groupHelper;
+    private ContactHelper contactHelper;
+    private NavigationHelper navigationHelper;
 
     public void start() {
         driver = new ChromeDriver();
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
         groupHelper = new GroupHelper(driver);
         contactHelper = new ContactHelper(driver);
+        navigationHelper = new NavigationHelper(driver);
         openAddressbook("http://localhost/addressbook/");
         login("admin", "secret");
-    }
-
-    public void goToGroupPage() {
-      driver.findElement(By.linkText("groups")).click();
     }
 
     public void login(String username, String password) {
@@ -63,9 +61,7 @@ public class ApplicationManager {
       }
     }
 
-    public void goToAddNewPage() {
-        driver.findElement(By.linkText("add new")).click();
-    }
+
 
 
     public void goToHomePage() {
@@ -79,5 +75,8 @@ public class ApplicationManager {
 
     public ContactHelper getContactHelper() {
         return contactHelper;
+    }
+    public NavigationHelper getNavigationHelper() {
+        return navigationHelper;
     }
 }

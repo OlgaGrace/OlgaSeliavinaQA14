@@ -7,7 +7,7 @@ public class CreateGroupTest extends TestBase {
 
   @Test(priority = 1)
   public void testUntitledTestCase() throws Exception {
-    app.goToGroupPage();
+    app.getNavigationHelper().goToGroupPage();
     int before = app.getGroupHelper().getGroupCount();
     app.getGroupHelper().createNewGroup();
     app.getGroupHelper().fillGropuForm(new GroupData("header", "name", "footer"));
@@ -20,7 +20,7 @@ public class CreateGroupTest extends TestBase {
 
   @Test(priority = 3)
   public void groupLongName() throws Exception {
-    app.goToGroupPage();
+    app.getNavigationHelper().goToGroupPage();
     int before = app.getGroupHelper().getGroupCount();
     app.getGroupHelper().createNewGroup();
     app.getGroupHelper().fillGropuForm(new GroupData("namelong", "headerlong", "footerlong"));
@@ -33,7 +33,7 @@ public class CreateGroupTest extends TestBase {
 
   @Test(priority = 2)
   public void groupShortName() throws Exception {
-    app.goToGroupPage();
+    app.getNavigationHelper().goToGroupPage();
     app.getGroupHelper().createNewGroup();
     app.getGroupHelper().fillGropuForm(new GroupData("ns", "hs", "footerlong"));
     app.getGroupHelper().submitGroupCreation();
@@ -43,7 +43,7 @@ public class CreateGroupTest extends TestBase {
 
   @Test(priority = 4)
   public void testUntitledTestCase2() throws Exception {
-    app.goToGroupPage();
+    app.getNavigationHelper().goToGroupPage();
     app.getGroupHelper().createNewGroup();
     app.getGroupHelper().fillGropuForm(new GroupData("name", "header", "footer"));
     app.getGroupHelper().submitGroupCreation();
