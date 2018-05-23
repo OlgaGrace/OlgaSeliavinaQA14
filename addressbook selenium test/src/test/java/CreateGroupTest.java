@@ -5,7 +5,7 @@ import org.testng.annotations.*;
 public class CreateGroupTest extends TestBase {
 
 
-  @Test(priority = 1)
+  @Test
   public void testUntitledTestCase() throws Exception {
     app.getNavigationHelper().goToGroupPage();
     int before = app.getGroupHelper().getGroupCount();
@@ -18,7 +18,7 @@ public class CreateGroupTest extends TestBase {
     Assert.assertEquals(after, before+1);
   }
 
-  @Test(priority = 3)
+  @Test
   public void groupLongName() throws Exception {
     app.getNavigationHelper().goToGroupPage();
     int before = app.getGroupHelper().getGroupCount();
@@ -31,7 +31,7 @@ public class CreateGroupTest extends TestBase {
     System.out.println("passed 3");
   }
 
-  @Test(priority = 2)
+  @Test
   public void groupShortName() throws Exception {
     app.getNavigationHelper().goToGroupPage();
     app.getGroupHelper().createNewGroup();
@@ -41,7 +41,7 @@ public class CreateGroupTest extends TestBase {
     System.out.println("passed 2");
   }
 
-  @Test(priority = 4)
+  @Test
   public void testUntitledTestCase2() throws Exception {
     app.getNavigationHelper().goToGroupPage();
     app.getGroupHelper().createNewGroup();
