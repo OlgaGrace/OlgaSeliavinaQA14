@@ -4,11 +4,11 @@ import com.telran.addressbook.model.ContactData;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-public class ContactHelper {
-    protected WebDriver driver;
+public class ContactHelper extends HelperBase{
 
-    public ContactHelper(WebDriver driver) {
-        this.driver=driver;
+
+    public ContactHelper (WebDriver driver) {
+       super(driver);
     }
 
     public void submitContactCreation() {
@@ -32,10 +32,6 @@ public class ContactHelper {
 
     public void selectContact() {
         driver.findElement(By.name("selected[]")).click();
-    }
-
-    public void acceptAlert() {
-        driver.switchTo().alert().accept();
     }
 
     public void initContactDelition() {

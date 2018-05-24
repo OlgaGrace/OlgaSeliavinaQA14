@@ -1,14 +1,26 @@
 package com.telran.addressbook.model;
 
 public class ContactData {
-    private final String firstname;
-    private final String lastname;
-    private final String address;
+    private  String firstname;
+    private  String lastname;
+    private  String address;
 
-    public ContactData(String firstname, String lastname, String address) {
+
+
+
+    public ContactData withFirstName(String firstname) {
         this.firstname = firstname;
-        this.lastname = lastname;
-        this.address = address;
+        return this;
+    }
+
+    public ContactData withLastname(String lastname) {
+                this.lastname = lastname;
+                return this;
+    }
+
+    public ContactData withAddress(String address) {
+              this.address = address;
+              return this;
     }
 
     public String getFirstname() {
