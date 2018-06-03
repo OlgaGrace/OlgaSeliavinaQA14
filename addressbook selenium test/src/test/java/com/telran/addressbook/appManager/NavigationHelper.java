@@ -17,4 +17,8 @@ public class NavigationHelper extends HelperBase {
     public void goToAddNewPage() {
         driver.findElement(By.linkText("add new")).click();
     }
+
+    public void goToHomePage() {
+        driver.findElement(By.xpath("//a[@href='./']")).click();
+    }
 }

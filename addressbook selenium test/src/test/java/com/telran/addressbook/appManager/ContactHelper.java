@@ -3,6 +3,7 @@ package com.telran.addressbook.appManager;
 import com.telran.addressbook.model.ContactData;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.Select;
 
 public class ContactHelper extends HelperBase{
 
@@ -28,6 +29,11 @@ public class ContactHelper extends HelperBase{
         driver.findElement(By.name("address")).click();
         driver.findElement(By.name("address")).clear();
         driver.findElement(By.name("address")).sendKeys(contactData.getAddress());
+
+        attach(By.name("photo"),contactData.getPhoto());
+        if (isElementPresent(By.xpath("//select[@name='new_group']"))){
+        new Select(driver.findElement(By.xpath("//select[@name='new_group']")))
+                .selectByVisibleText(contactData.getGroup());}
     }
 
     public void selectContact() {
